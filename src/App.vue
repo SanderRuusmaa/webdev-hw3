@@ -12,4 +12,7 @@
 body{
   margin:0;
 }
+*:focus {
+    outline: none;
+}
 </style>

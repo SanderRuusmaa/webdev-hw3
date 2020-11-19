@@ -21,7 +21,7 @@
                 <h3>{{ post.text }}</h3>
             </div>
             <div class="post-actions">
-                <button type="button" name="like" class="like-button">{{ post.likes }}</button>
+                <button  @click = "liked" type="button" name="like" class="like-button" v-bind:class='{"liked": isActive}'> <img src="../assets/like.png" alt=""> {{ post.likes }} </button>
             </div>
     </div>
 </template>
@@ -29,7 +29,17 @@
 <script>
 export default {
   props: ['post'],
-  name: 'Post'
+  name: 'Post',
+  data () {
+    return {
+      isActive: false
+    }
+  },
+  methods: {
+    liked () {
+      this.isActive = !this.isActive
+    }
+  }
 }
 </script>
 
@@ -102,10 +112,23 @@ export default {
 .like-button{
     position: relative;
     float:left;
+    background-color: grey;
+}
+
+.like-button.liked {
+    background-color: #0077ff;
 }
 
 video{
   width: 100%;
   height:100%;
 }
+
+button img{
+  position: relative;
+  width: 15px;
+  top: 50%;
+  transform: translateY(10%);
+}
+
 </style>
