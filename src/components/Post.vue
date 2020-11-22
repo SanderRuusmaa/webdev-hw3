@@ -5,7 +5,7 @@
             <img v-bind:src=post.author.avatar alt="Post author">
             <small>{{ post.author.firstname }}  {{ post.author.lastname }}</small>
             </span>
-            <small>{{ post.createTime }}</small>
+            <small>{{ datePosted }}</small>
         </div>
             <div v-if="post.media != null">
                 <div class="post-image" v-if="post.media.type == 'image'">
@@ -38,6 +38,11 @@ export default {
   methods: {
     liked () {
       this.isActive = !this.isActive
+    }
+  },
+  computed: {
+    datePosted () {
+      return 'Posted: ' + this.post.createTime
     }
   }
 }
